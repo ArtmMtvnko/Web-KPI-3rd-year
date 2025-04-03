@@ -1,0 +1,13 @@
+@Web_Lab2_HTTPS_HostAddress = https://localhost:5001
+
+GET {{Web_Lab2_HTTPS_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{Web_Lab2_HTTPS_HostAddress}}/student/fullname
+Accept: application/json
+
+###
+
+
