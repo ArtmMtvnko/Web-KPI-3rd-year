@@ -14,8 +14,8 @@
     "Https": {
       "commandName": "Project",
       "dotnetRunMesseges": true,
-      "launchBrowser": false,
-      "launchUrl": "weatherforecast",
+      "launchBrowser": true,
+      "launchUrl": "student/fullname",
       "applicationUrl": "https://localhost:5001",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

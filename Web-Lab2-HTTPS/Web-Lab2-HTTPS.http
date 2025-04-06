@@ -1,13 +1,19 @@
-@Web_Lab2_HTTPS_HostAddress = https://localhost:5001
+@HTTPS_HostAddress = https://localhost:5001
+@HTTP_HOST = http://localhost:5000
 
-GET {{Web_Lab2_HTTPS_HostAddress}}/weatherforecast/
+### HTTPS weather
+
+GET {{HTTPS_HostAddress}}/weatherforecast/
 Accept: application/json
 
+### HTTPS student
+
+GET {{HTTPS_HostAddress}}/student/fullname
+Accept: text/plain
+
+### HTTP student
+
+GET {{HTTP_HOST}}/student/fullname
+Accept: text/plain
+
 ###
-
-GET {{Web_Lab2_HTTPS_HostAddress}}/student/fullname
-Accept: application/json
-
-###
-
-

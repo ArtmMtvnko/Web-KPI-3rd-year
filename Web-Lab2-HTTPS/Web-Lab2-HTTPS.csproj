@@ -8,4 +8,8 @@
     <UserSecretsId>a4893fde-69d1-423a-95e6-f3e361b524e4</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+
 </Project>
