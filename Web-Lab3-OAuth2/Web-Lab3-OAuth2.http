@@ -1,0 +1,16 @@
+@Web_Lab3_OAuth2_HostAddress = http://localhost:5222
+
+GET {{Web_Lab3_OAuth2_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{Web_Lab3_OAuth2_HostAddress}}/auth/login
+Accept: application/json
+
+###
+
+GET {{Web_Lab3_OAuth2_HostAddress}}/auth/callback?code=test123
+Accept: application/json
+
+###
