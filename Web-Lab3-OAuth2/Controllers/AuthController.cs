@@ -84,7 +84,7 @@ public class AuthController : ControllerBase
 
         Response.Cookies.Append("access_token", accessToken, cookieOptions);
 
-        return Redirect("/weatherforecast");
+        return Redirect("/");
     }
 
     [HttpGet("status")]
