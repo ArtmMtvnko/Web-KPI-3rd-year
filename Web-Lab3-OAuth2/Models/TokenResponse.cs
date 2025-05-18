@@ -11,10 +11,10 @@ public class TokenResponse
     public required int ExpiresIn { get; set; }
 
     [JsonPropertyName("id_token")]
-    public required string IdToken { get; set; }
+    public string? IdToken { get; set; }
 
     [JsonPropertyName("refresh_token")]
-    public required string RefreshToken { get; set; }
+    public string? RefreshToken { get; set; }
 
     [JsonPropertyName("scope")]
     public required string Scope { get; set; }

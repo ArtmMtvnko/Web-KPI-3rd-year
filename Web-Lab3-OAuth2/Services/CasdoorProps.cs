@@ -8,6 +8,8 @@ public class CasdoorProps
 
     public string TokenEndpoint { get; }
 
+    public string CheckJwtEndpoint { get; }
+
     public string ClientId { get; }
 
     public string ClientSecret { get; }
@@ -24,6 +26,7 @@ public class CasdoorProps
         ConnectUrl = configuration["Casdoor:ConnectUrl"] ?? string.Empty;
         LoginEndpoint = configuration["Casdoor:LoginEndpoint"] ?? string.Empty;
         TokenEndpoint = configuration["Casdoor:TokenEndpoint"] ?? string.Empty;
+        CheckJwtEndpoint = configuration["Casdoor:CheckJwtEndpoint"] ?? string.Empty;
         ClientId = configuration["Casdoor:ClientId"] ?? string.Empty;
         ClientSecret = configuration["Casdoor:ClientSecret"] ?? string.Empty;
         RedirectUrl = configuration["Casdoor:RedirectUrl"] ?? string.Empty;

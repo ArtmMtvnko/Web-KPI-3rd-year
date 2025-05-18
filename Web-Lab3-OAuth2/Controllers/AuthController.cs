@@ -74,7 +74,7 @@ public class AuthController : ControllerBase
 
         var accessToken = tokenResponseContent.AccessToken;
 
-        var cookieOptions = new CookieOptions()
+        var cookieOptions = new CookieOptions
         {
             HttpOnly = true,
             Secure = true,
@@ -84,6 +84,27 @@ public class AuthController : ControllerBase
 
         Response.Cookies.Append("access_token", accessToken, cookieOptions);
 
-        return Redirect("/");
+        return Redirect("/weatherforecast");
+    }
+
+    [HttpGet("status")]
+    public IActionResult UserStatus()
+    {
+        var accessToken = Request.Cookies["access_token"];
+
+        if (string.IsNullOrEmpty(accessToken))
+        {
+            return Unauthorized(new
+            {
+                Status = "Logged out",
+                Message = "No access token found"
+            });
+        }
+
+        return Ok(new
+        {
+            Status = "Logged in",
+            AccessToken = accessToken
+        });
     }
 }
