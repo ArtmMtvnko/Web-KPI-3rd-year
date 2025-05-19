@@ -1,8 +1,22 @@
+using System.Net;
 using Web_Lab3_OAuth2.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    var certPath = builder.Configuration["CertPath"];
+    var certPass = builder.Configuration["CertPass"];
+    var host = Dns.GetHostEntry("localhost").AddressList.First();
+
+    options.Listen(host, 5222);
+    options.Listen(host, 5443, listOptions =>
+    {
+        listOptions.UseHttps(certPath, certPass);
+    });
+});
 
 builder.Services.AddControllers();
 

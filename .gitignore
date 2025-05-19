@@ -10,3 +10,5 @@ appsettings.*.json
 
 *.user
 /Web-Lab3-OAuth2/Web-Lab3-OAuth2.csproj
+
+**/Env

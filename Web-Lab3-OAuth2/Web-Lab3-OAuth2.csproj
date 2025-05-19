@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Web_Lab3_OAuth2</RootNamespace>
+    <UserSecretsId>c07e533b-3703-47fc-a3f6-dbaf4a56549d</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
