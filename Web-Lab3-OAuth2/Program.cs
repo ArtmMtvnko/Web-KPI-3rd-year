@@ -1,4 +1,5 @@
 using System.Net;
+using Web_Lab3_OAuth2.Middlewares;
 using Web_Lab3_OAuth2.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,8 +24,10 @@ builder.Services.AddControllers();
 builder.Services.AddHttpClient();
 
 builder.Services.AddSingleton<CasdoorProps>();
-
 builder.Services.AddSingleton<JwtDecoder>();
+builder.Services.AddSingleton<Coins>();
+
+builder.Services.AddTransient<WebSocketHandlerMiddleware>();
 
 var app = builder.Build();
 
@@ -36,6 +39,10 @@ app.MapFallbackToFile("index.html");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseWebSockets();
+
+app.UseWebSocketHandlerMiddleware();
 
 app.MapControllers();
 
