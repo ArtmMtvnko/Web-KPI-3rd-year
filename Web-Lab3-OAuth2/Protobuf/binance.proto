@@ -1,0 +1,13 @@
+﻿syntax = "proto3";
+
+message BinanceResponseProtobuf {
+	string stream = 1;
+	BinanceDataProtobuf data = 2;
+}
+
+message BinanceDataProtobuf {
+	string symbol = 1;
+	string priceChange = 2;
+	string priceChangePercent = 3;
+	string lastPrice = 4;
+}

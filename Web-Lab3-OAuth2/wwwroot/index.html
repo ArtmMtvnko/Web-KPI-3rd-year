@@ -5,7 +5,7 @@
     <title></title>
 </head>
 <body>
-    <h1>Web Lab 3. Casdoor OAuth2.0</h1>
+    <h1>Web Lab 4. Websockets</h1>
     <h2 style="display: inline;">Status:</h2>
     <h3 id="userStatus" style="display: inline;">...</h3>
     <div id="info" style="display: none;">
@@ -13,6 +13,14 @@
         <p id="userData"></p>
     </div>
     <button id="signInBtn" style="display: none;" onclick="(() => { window.location.href = '/auth/login' })()">Sign in</button>
+
+    <div id="currencyTracking">
+        <button onclick="startStreaming()" class="start_stream_btn">Start receiving data</button>
+        <button onclick="stopStreaming()" class="stop_stream_btn" style="display: none;">Stop</button>
+
+        <div id="currencyBoard"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/protobufjs/dist/protobuf.min.js"></script>
     <script src="./script.js"></script>
 </body>
 </html>
