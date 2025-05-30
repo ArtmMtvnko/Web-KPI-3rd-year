@@ -14,3 +14,10 @@ GET {{Web_Lab3_OAuth2_HostAddress}}/auth/callback?code=test123
 Accept: application/json
 
 ###
+
+@https = https://localhost:5443
+
+GET {{https}}/weatherforecast/protobuf
+Accept: application/x-protobuf
+
+###

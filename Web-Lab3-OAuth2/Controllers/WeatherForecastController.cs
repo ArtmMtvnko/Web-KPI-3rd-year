@@ -1,3 +1,4 @@
+using Google.Protobuf;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Web_Lab3_OAuth2.Controllers
@@ -28,6 +29,27 @@ namespace Web_Lab3_OAuth2.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet("protobuf")]
+        public byte[] GetProtobuf()
+        {
+            var json = @"
+            {
+                ""stream"": ""btcusdt@ticker"",
+                ""data"": {
+                    ""symbol"": ""BTCUSDT"",
+                    ""priceChange"": ""-0.01000000"",
+                    ""priceChangePercent"": ""-0.010"",
+                    ""lastPrice"": ""101.4665""
+                }
+            }
+            ";
+
+            var parser = new JsonParser(JsonParser.Settings.Default);
+            var message = parser.Parse<BinanceResponseProtobuf>(json);
+
+            return message.ToByteArray();
         }
     }
 }

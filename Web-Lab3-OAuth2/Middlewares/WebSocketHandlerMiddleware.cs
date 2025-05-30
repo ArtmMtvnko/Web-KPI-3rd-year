@@ -1,6 +1,7 @@
 ﻿using System.Net.WebSockets;
 using System.Text;
 using System.Text.Json;
+using Google.Protobuf;
 using Web_Lab3_OAuth2.Models;
 using Web_Lab3_OAuth2.Services;
 
@@ -92,14 +93,25 @@ public class WebSocketHandlerMiddleware : IMiddleware
                         $"\tprice: {response.Data.LastPrice}"
                     );
 
-                    var answer = JsonSerializer.Serialize(response);
-                    var answerBytes = Encoding.UTF8.GetBytes(answer);
+                    var responseProtobuf = new BinanceResponseProtobuf
+                    {
+                        Stream = response.Stream,
+                        Data = new BinanceDataProtobuf
+                        {
+                            Symbol = response.Data.Symbol,
+                            PriceChange = response.Data.PriceChange,
+                            PriceChangePercent = response.Data.PriceChangePercent,
+                            LastPrice = response.Data.LastPrice
+                        }
+                    };
+
+                    var protobufBytes = responseProtobuf.ToByteArray();
 
                     if (clientWebSocket.State == WebSocketState.Open)
                     {
                         await clientWebSocket.SendAsync(
-                            new ArraySegment<byte>(answerBytes, 0, answerBytes.Length),
-                            WebSocketMessageType.Text,
+                            new ArraySegment<byte>(protobufBytes),
+                            WebSocketMessageType.Binary,
                             true,
                             cancellationToken
                         );
